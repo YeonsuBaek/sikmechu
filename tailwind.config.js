@@ -10,6 +10,12 @@ tailwind.config = {
       fontFamily: {
         body: ["Noto Sans KR"],
       },
+      width: {
+        half: "calc(50% - 4px)",
+      },
+      aspectRatio: {
+        "4/3": "4 / 3",
+      },
     },
   },
 };
