@@ -11,6 +11,8 @@ const foodTypeList = document.querySelectorAll(".food-type");
 const carbsTypeList = document.querySelectorAll(".carbs-type");
 const spicyTypeList = document.querySelectorAll(".spicy-type");
 const meatTypeList = document.querySelectorAll(".meat-type");
+const sendButton = document.querySelector(".send-button");
+const recommandation = document.querySelector(".recommandation");
 
 optionButtonList.forEach((optionButton) => {
   optionButton.addEventListener("click", function () {
@@ -37,3 +39,7 @@ selectOptions(foodTypeList, selectedList.food);
 selectOptions(carbsTypeList, selectedList.carbs);
 selectOptions(spicyTypeList, selectedList.spicy);
 selectOptions(meatTypeList, selectedList.meat);
+
+sendButton.addEventListener("click", function () {
+  recommandation.classList.remove("hidden");
+});
