@@ -42,6 +42,19 @@ selectOptions(spicyTypeList, selectedList.spicy);
 selectOptions(meatTypeList, selectedList.meat);
 
 sendButton.addEventListener("click", function () {
-  new App().recommand(selectedList);
+  const recommandations = new App().recommand(selectedList);
+  printRecommandations(recommandations);
   recommandation.classList.remove("hidden");
 });
+
+function printRecommandations(list) {
+  const recommandationList = document.querySelector(".recommandation-list");
+  for (let i = 0; i < list.length; i++) {
+    recommandationList.innerHTML += `<li class="flex flex-col items-center w-half">
+      <div class="aspect-4/3 overflow-hidden rounded">
+        <img class="w-full h-full object-cover" src="./assets/${list[i].image}" alt="${list[i].name}" />
+      </div>
+      <strong class="font-normal">${list[i].name}</strong>
+    </li>`;
+  }
+}

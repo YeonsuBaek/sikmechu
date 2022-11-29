@@ -8,6 +8,7 @@ export default class App {
     const spicyType = this.hasOption(selectedList.spicy, carbsType);
     const meatType = this.hasOption(selectedList.meat, spicyType);
     console.log(meatType);
+    return meatType;
   }
 
   hasOption(options, list) {
