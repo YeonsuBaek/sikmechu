@@ -52,7 +52,7 @@ function printRecommandations(list) {
   for (let i = 0; i < list.length; i++) {
     recommandationList.innerHTML += `<li class="flex flex-col items-center w-half">
       <div class="aspect-4/3 overflow-hidden rounded">
-        <img class="w-full h-full object-cover" src="./assets/${list[i].image}" alt="${list[i].name}" />
+        <img class="w-full h-full object-cover" src="./assets/img/img-food-${list[i].name}.jpg" alt="${list[i].name}" />
       </div>
       <strong class="font-normal">${list[i].name}</strong>
     </li>`;
