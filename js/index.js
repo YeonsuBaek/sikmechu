@@ -1,4 +1,16 @@
 const optionButtonList = document.querySelectorAll(".option-button");
+let selectedList = {
+  eat: [],
+  food: [],
+  carbs: [],
+  spicy: [],
+  meat: [],
+};
+const eatTypeList = document.querySelectorAll(".eat-type");
+const foodTypeList = document.querySelectorAll(".food-type");
+const carbsTypeList = document.querySelectorAll(".carbs-type");
+const spicyTypeList = document.querySelectorAll(".spicy-type");
+const meatTypeList = document.querySelectorAll(".meat-type");
 
 optionButtonList.forEach((optionButton) => {
   optionButton.addEventListener("click", function () {
@@ -6,3 +18,22 @@ optionButtonList.forEach((optionButton) => {
     optionButton.classList.toggle("text-white");
   });
 });
+
+function selectOptions(typeList, selectedList) {
+  typeList.forEach((typeButton) => {
+    typeButton.addEventListener("click", function () {
+      const type = typeButton.innerText;
+      if (selectedList.includes(type)) {
+        selectedList.splice(selectedList.indexOf(type), 1);
+      } else {
+        selectedList.push(type);
+      }
+    });
+  });
+}
+
+selectOptions(eatTypeList, selectedList.eat);
+selectOptions(foodTypeList, selectedList.food);
+selectOptions(carbsTypeList, selectedList.carbs);
+selectOptions(spicyTypeList, selectedList.spicy);
+selectOptions(meatTypeList, selectedList.meat);
