@@ -1,3 +1,4 @@
+import App from "./App.js";
 const optionButtonList = document.querySelectorAll(".option-button");
 let selectedList = {
   eat: [],
@@ -41,5 +42,6 @@ selectOptions(spicyTypeList, selectedList.spicy);
 selectOptions(meatTypeList, selectedList.meat);
 
 sendButton.addEventListener("click", function () {
+  new App().recommand(selectedList);
   recommandation.classList.remove("hidden");
 });
