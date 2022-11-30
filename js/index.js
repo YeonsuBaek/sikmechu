@@ -15,13 +15,8 @@ const meatTypeList = document.querySelectorAll(".meat-type");
 const sendButton = document.querySelector(".send-button");
 const recommandation = document.querySelector(".recommandation");
 
-function clickEvent() {
-  if ("ontouchstart" in document.documentElement) return "touchstart";
-  return "click";
-}
-
 optionButtonList.forEach((optionButton) => {
-  optionButton.addEventListener(clickEvent(), function () {
+  optionButton.addEventListener("pointerdown", function () {
     optionButton.classList.toggle("bg-blue");
     optionButton.classList.toggle("text-white");
   });
@@ -29,7 +24,7 @@ optionButtonList.forEach((optionButton) => {
 
 function selectOptions(typeList, selectedList) {
   typeList.forEach((typeButton) => {
-    typeButton.addEventListener(clickEvent(), function () {
+    typeButton.addEventListener("pointerdown", function () {
       const type = typeButton.innerText;
       if (selectedList.includes(type)) {
         selectedList.splice(selectedList.indexOf(type), 1);
