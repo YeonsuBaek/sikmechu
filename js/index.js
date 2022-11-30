@@ -14,6 +14,7 @@ const spicyTypeList = document.querySelectorAll(".spicy-type");
 const meatTypeList = document.querySelectorAll(".meat-type");
 const sendButton = document.querySelector(".send-button");
 const recommandation = document.querySelector(".recommandation");
+const headerLogo = document.querySelector(".header-logo");
 
 optionButtonList.forEach((optionButton) => {
   optionButton.addEventListener("pointerdown", function () {
@@ -58,3 +59,7 @@ function printRecommandations(list) {
     </li>`;
   }
 }
+
+headerLogo.addEventListener("pointerdown", function () {
+  location.reload();
+});
