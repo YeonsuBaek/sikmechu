@@ -17,7 +17,7 @@ const recommandation = document.querySelector(".recommandation");
 const headerLogo = document.querySelector(".header-logo");
 
 optionButtonList.forEach((optionButton) => {
-  optionButton.addEventListener("pointerdown", function () {
+  optionButton.addEventListener("pointerup", function () {
     optionButton.classList.toggle("bg-blue");
     optionButton.classList.toggle("text-white");
   });
@@ -25,7 +25,7 @@ optionButtonList.forEach((optionButton) => {
 
 function selectOptions(typeList, selectedList) {
   typeList.forEach((typeButton) => {
-    typeButton.addEventListener("pointerdown", function () {
+    typeButton.addEventListener("pointerup", function () {
       const type = typeButton.innerText;
       if (selectedList.includes(type)) {
         selectedList.splice(selectedList.indexOf(type), 1);
@@ -60,6 +60,6 @@ function printRecommandations(list) {
   }
 }
 
-headerLogo.addEventListener("pointerdown", function () {
+headerLogo.addEventListener("pointerup", function () {
   location.reload();
 });
