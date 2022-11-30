@@ -26,7 +26,7 @@ optionButtonList.forEach((optionButton) => {
 function selectOptions(typeList, selectedList) {
   typeList.forEach((typeButton) => {
     typeButton.addEventListener("pointerup", function () {
-      const type = typeButton.innerText;
+      const type = typeButton.firstElementChild.innerText;
       if (selectedList.includes(type)) {
         selectedList.splice(selectedList.indexOf(type), 1);
       } else {
