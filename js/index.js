@@ -60,6 +60,11 @@ function printRecommandations(list) {
     </li>`;
     recommandationList.insertAdjacentHTML("beforeend", content);
   }
+
+  if (list.length === 0) {
+    const alert = `<strong class="font-normal">해당 옵션에 대한 메뉴는 존재하지 않아요!<br />다른 옵션을 선택해주세요...</strong>`;
+    recommandationList.insertAdjacentHTML("beforeend", alert);
+  }
 }
 
 headerLogo.addEventListener("pointerup", function () {
