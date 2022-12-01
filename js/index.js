@@ -44,9 +44,21 @@ selectOptions(meatTypeList, selectedList.meat);
 
 sendButton.addEventListener("click", function () {
   const recommandations = new App().recommand(selectedList);
-  printRecommandations(recommandations);
-  recommandation.classList.remove("hidden");
+  recommandation.classList.add("hidden");
+  printLoadingSection();
+  setTimeout(() => {
+    printRecommandations(recommandations);
+    recommandation.classList.remove("hidden");
+  }, "3000");
 });
+
+function printLoadingSection() {
+  const loadingSection = document.querySelector(".loading");
+  loadingSection.classList.remove("hidden");
+  setTimeout(() => {
+    loadingSection.classList.add("hidden");
+  }, "3000");
+}
 
 function printRecommandations(list) {
   const recommandationList = document.querySelector(".recommandation-list");
