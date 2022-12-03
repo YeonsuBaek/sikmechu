@@ -49,7 +49,7 @@ sendButton.addEventListener("click", function () {
   setTimeout(() => {
     printRecommandations(recommandations);
     recommandation.classList.remove("hidden");
-  }, "3000");
+  }, "1000");
 });
 
 function printLoadingSection() {
@@ -57,7 +57,7 @@ function printLoadingSection() {
   loadingSection.classList.remove("hidden");
   setTimeout(() => {
     loadingSection.classList.add("hidden");
-  }, "3000");
+  }, "1000");
 }
 
 function printRecommandations(list) {
