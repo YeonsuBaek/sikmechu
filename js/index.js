@@ -64,10 +64,7 @@ function printRecommandations(list) {
   const recommandationList = document.querySelector(".recommandation-list");
   recommandationList.replaceChildren();
   for (let i = 0; i < list.length; i++) {
-    const content = `<li class="flex flex-col items-center w-half">
-      <div class="aspect-4/3 overflow-hidden rounded">
-        <img class="w-full h-full object-cover" src="./assets/img/img-food-${list[i].name}.jpg" alt="${list[i].name}" />
-      </div>
+    const content = `<li class="flex flex-col items-center py-2 w-half bg-gray">
       <strong class="font-normal">${list[i].name}</strong>
     </li>`;
     recommandationList.insertAdjacentHTML("beforeend", content);
