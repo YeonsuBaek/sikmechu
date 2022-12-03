@@ -74,6 +74,9 @@ function printRecommandations(list) {
     const alert = `<strong class="font-normal">해당 옵션에 대한 메뉴는 존재하지 않아요!<br />다른 옵션을 선택해주세요...</strong>`;
     recommandationList.insertAdjacentHTML("beforeend", alert);
   }
+
+  const survey = `<a class="block mt-4 text-center text-blue underline" href="https://docs.google.com/forms/d/e/1FAIpQLSdOOKkABrSWTLfGuZ3-YlQYVwqTaFgxDEfR4vIBoXkwgQHBKA/viewform">사용 후기를 남겨주세요!</a>`;
+  recommandation.insertAdjacentHTML("beforeend", survey);
 }
 
 headerLogo.addEventListener("pointerup", function () {
