@@ -5,6 +5,7 @@ tailwind.config = {
         black: "#222222",
         white: "#ffffff",
         blue: "#1755DA",
+        darkBlue: "#1244AE",
         gray: "#F4F4F4",
       },
       fontFamily: {
