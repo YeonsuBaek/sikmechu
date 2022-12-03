@@ -16,3 +16,9 @@
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
 <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=Tailwind CSS&logoColor=white"/>
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black"/>
+
+## 문제 해결
+
+iOS에서 JSON을 사용하며 겪은 문제를 해결하였습니다. [해결 과정 보러가기](https://velog.io/@yeonsubaek/JavaScript-iOS%EC%97%90%EC%84%9C-JSON-%EC%82%AC%EC%9A%A9%ED%95%A0-%EB%95%8C-%EC%A3%BC%EC%9D%98%ED%95%A0-%EC%A0%90)
+
+iOS에서 innerText를 사용하며 겪은 문제를 해결하였습니다. [해결 과정 보러가기](https://velog.io/@yeonsubaek/iOS%EC%97%90%EC%84%9C-innerText-%EC%82%AC%EC%9A%A9%ED%95%A0-%EB%95%8C-%EC%A3%BC%EC%9D%98%ED%95%A0-%EC%A0%90)
