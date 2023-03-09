@@ -34,12 +34,12 @@ optionButtonList.forEach((optionButton) => {
 });
 
 // 옵션 버튼 클릭 시 해당 리스트 안에 추가
-function selectOptions(typeList, selectedList) {
+function selectOptions(typeList, selectedItem) {
   typeList.forEach((typeButton) => {
     typeButton.addEventListener('pointerup', function () {
       const type = typeButton.firstElementChild.innerText;
-      if (!selectedList.includes(type)) {
-        selectedList.push(type);
+      if (!selectedItem.includes(type)) {
+        selectedItem.push(type);
       }
     });
   });
