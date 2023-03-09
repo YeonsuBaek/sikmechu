@@ -26,7 +26,7 @@ const headerLogo = document.querySelector('.header-logo');
 
 // 옵션 버튼 클릭 시 바뀔 스타일
 optionButtonList.forEach((optionButton) => {
-  optionButton.addEventListener('pointerup', function () {
+  optionButton.addEventListener('pointerup', () => {
     optionButton.classList.toggle('bg-blue');
     optionButton.classList.toggle('bg-gray');
     optionButton.classList.toggle('text-white');
@@ -34,16 +34,16 @@ optionButtonList.forEach((optionButton) => {
 });
 
 // 옵션 버튼 클릭 시 해당 리스트 안에 추가
-function selectOptions(typeList, selectedItem) {
+const selectOptions = (typeList, selectedItem) => {
   typeList.forEach((typeButton) => {
-    typeButton.addEventListener('pointerup', function () {
+    typeButton.addEventListener('pointerup', () => {
       const type = typeButton.firstElementChild.innerText;
       if (!selectedItem.includes(type)) {
         selectedItem.push(type);
       }
     });
   });
-}
+};
 
 selectOptions(eatTypeList, selectedList.eat);
 selectOptions(foodTypeList, selectedList.food);
@@ -51,7 +51,7 @@ selectOptions(carbsTypeList, selectedList.carbs);
 selectOptions(spicyTypeList, selectedList.spicy);
 selectOptions(meatTypeList, selectedList.meat);
 
-sendButton.addEventListener('click', function () {
+sendButton.addEventListener('click', () => {
   const recommandations = new App().recommand(selectedList);
   recommandation.classList.add('hidden');
   printLoadingSection();
@@ -61,20 +61,20 @@ sendButton.addEventListener('click', function () {
   }, '1000');
 });
 
-function printLoadingSection() {
+const printLoadingSection = () => {
   const loadingSection = document.querySelector('.loading');
   loadingSection.classList.remove('hidden');
   setTimeout(() => {
     loadingSection.classList.add('hidden');
   }, '1000');
-}
+};
 
-function printRecommandations(list) {
+const printRecommandations = (list) => {
   const recommandationList = document.querySelector('.recommandation-list');
   recommandationList.replaceChildren();
-  for (let i = 0; i < list.length; i++) {
+  for (const item in list) {
     const content = `<li class="flex flex-col items-center py-2 w-half bg-gray">
-      <strong class="font-normal">${list[i].name}</strong>
+      <strong class="font-normal">${list[item].name}</strong>
     </li>`;
     recommandationList.insertAdjacentHTML('beforeend', content);
   }
@@ -83,8 +83,8 @@ function printRecommandations(list) {
     const alert = `<strong class="font-normal">해당 옵션에 대한 메뉴는 존재하지 않아요!<br />다른 옵션을 선택해주세요...</strong>`;
     recommandationList.insertAdjacentHTML('beforeend', alert);
   }
-}
+};
 
-headerLogo.addEventListener('pointerup', function () {
+headerLogo.addEventListener('pointerup', () => {
   location.reload();
 });
