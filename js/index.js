@@ -1,5 +1,9 @@
 import App from './App.js';
+
+// 모든 옵션 버튼
 const optionButtonList = document.querySelectorAll('.option-button');
+
+// 타입별 선택한 옵션
 let selectedList = {
   eat: [],
   food: [],
@@ -7,15 +11,20 @@ let selectedList = {
   spicy: [],
   meat: [],
 };
+
+// 타입별 옵션 버튼
 const eatTypeList = document.querySelectorAll('.eat-type');
 const foodTypeList = document.querySelectorAll('.food-type');
 const carbsTypeList = document.querySelectorAll('.carbs-type');
 const spicyTypeList = document.querySelectorAll('.spicy-type');
 const meatTypeList = document.querySelectorAll('.meat-type');
+
+// 기타 버튼
 const sendButton = document.querySelector('.send-button');
 const recommandation = document.querySelector('.recommandation');
 const headerLogo = document.querySelector('.header-logo');
 
+// 옵션 버튼 클릭 시 바뀔 스타일
 optionButtonList.forEach((optionButton) => {
   optionButton.addEventListener('pointerup', function () {
     optionButton.classList.toggle('bg-blue');
@@ -24,6 +33,7 @@ optionButtonList.forEach((optionButton) => {
   });
 });
 
+// 옵션 버튼 클릭 시 해당 리스트 안에 추가
 function selectOptions(typeList, selectedList) {
   typeList.forEach((typeButton) => {
     typeButton.addEventListener('pointerup', function () {
