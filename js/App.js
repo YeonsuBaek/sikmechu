@@ -1,4 +1,4 @@
-import foods from "../assets/data/foods.js";
+import foods from '../assets/data/foods.js';
 
 export default class App {
   #selectedOptions;
@@ -19,11 +19,16 @@ export default class App {
 
   hasOption(options, list) {
     const selectedList = list.filter((food) => {
-      const selectedMenu = options.filter((option) => food.options.includes(option));
+      const selectedMenu = options.filter((option) =>
+        food.options.includes(option)
+      );
       if (selectedMenu.length !== 0) {
         return selectedMenu;
       }
     });
+    if (selectedList.length === 0) {
+      return list;
+    }
     return selectedList;
   }
 }
