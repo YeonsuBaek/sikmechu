@@ -14,7 +14,7 @@
   </head>
   <body class="text-black font-body">
     <header
-      class="fixed inset-0 flex items-center justify-center h-12 bg-white border-b-2 border-gray"
+      class="fixed inset-0 z-20 flex items-center justify-center h-12 bg-white border-b-2 border-gray"
     >
       <button class="header-logo" type="button">
         <img class="h-7" src="./assets/logo.svg" alt="식메추" />
@@ -253,21 +253,23 @@
       >
         밥 먹을 준비 완료!
       </button>
-
-      <section class="hidden loading">
-        <strong class="block m-3.5 font-normal">메뉴를 찾고 있어요!</strong>
-      </section>
-
-      <section class="hidden recommandation">
-        <h1 class="mt-3.5 mb-3 text-lg font-bold">이런 메뉴는 어떠세요?</h1>
-        <ul class="flex flex-wrap gap-2 recommandation-list"></ul>
-        <a
-          class="block mt-4 text-center underline text-blue active:text-darkBlue"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSdOOKkABrSWTLfGuZ3-YlQYVwqTaFgxDEfR4vIBoXkwgQHBKA/viewform"
-          >사용 후기를 남겨주세요!</a
-        >
-      </section>
     </main>
+
+    <section class="hidden loading">
+      <strong class="block m-3.5 font-normal">메뉴를 찾고 있어요!</strong>
+    </section>
+
+    <section
+      class="absolute z-10 left-50% hidden bg-white top-12 recommandation w-screen p-4"
+    >
+      <h1 class="mt-3.5 mb-3 text-lg font-bold">이런 메뉴는 어떠세요?</h1>
+      <ul class="flex flex-wrap gap-2 recommandation-list"></ul>
+      <a
+        class="block mt-4 text-center underline text-blue active:text-darkBlue"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdOOKkABrSWTLfGuZ3-YlQYVwqTaFgxDEfR4vIBoXkwgQHBKA/viewform"
+        >사용 후기를 남겨주세요!</a
+      >
+    </section>
 
     <script src="./js/index.js" type="module"></script>
   </body>

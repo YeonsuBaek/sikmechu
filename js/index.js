@@ -75,7 +75,7 @@ const printRecommandations = (list) => {
   const recommandationList = document.querySelector('.recommandation-list');
   recommandationList.replaceChildren();
   for (const item in list) {
-    const content = `<li class="flex flex-col items-center py-2 w-half bg-gray">
+    const content = `<li class="flex flex-col items-center py-2 w-half bg-gray max-[400px]:w-full md:w-[32.5%] lg:w-[24%]">
       <strong class="font-normal">${list[item].name}</strong>
     </li>`;
     recommandationList.insertAdjacentHTML('beforeend', content);
