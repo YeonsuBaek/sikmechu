@@ -38,7 +38,9 @@ const selectOptions = (typeList, selectedItem) => {
   typeList.forEach((typeButton) => {
     typeButton.addEventListener('pointerup', () => {
       const type = typeButton.firstElementChild.innerText;
-      if (!selectedItem.includes(type)) {
+      if (selectedItem.includes(type)) {
+        selectedItem.splice(selectedItem.indexOf(type), 1);
+      } else {
         selectedItem.push(type);
       }
     });
