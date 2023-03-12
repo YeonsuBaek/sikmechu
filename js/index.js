@@ -21,6 +21,7 @@ const meatTypeList = document.querySelectorAll('.meat-type');
 
 // 기타 버튼
 const sendButton = document.querySelector('.send-button');
+const resetButton = document.querySelector('.reset-button');
 const recommandation = document.querySelector('.recommandation');
 const headerLogo = document.querySelector('.header-logo');
 
@@ -89,4 +90,12 @@ const printRecommandations = (list) => {
 
 headerLogo.addEventListener('pointerup', () => {
   location.reload();
+});
+
+resetButton.addEventListener('pointerup', () => {
+  recommandation.classList.add('hidden');
+  sendButton.disabled = true;
+  setTimeout(() => {
+    sendButton.disabled = false;
+  }, '300');
 });
