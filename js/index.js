@@ -25,19 +25,21 @@ const resetButton = document.querySelector('.reset-button');
 const recommandation = document.querySelector('.recommandation');
 const headerLogo = document.querySelector('.header-logo');
 
+const changeButtonStyle = (button) => {
+  button.classList.toggle('bg-blue');
+  button.classList.toggle('bg-gray');
+  button.classList.toggle('text-white');
+};
+
 // 옵션 버튼 클릭 시 바뀔 스타일
 optionButtonList.forEach((optionButton) => {
-  optionButton.addEventListener('pointerup', () => {
-    optionButton.classList.toggle('bg-blue');
-    optionButton.classList.toggle('bg-gray');
-    optionButton.classList.toggle('text-white');
-  });
+  optionButton.addEventListener('click', () => changeButtonStyle(optionButton));
 });
 
 // 옵션 버튼 클릭 시 해당 리스트 안에 추가
 const selectOptions = (typeList, selectedItem) => {
   typeList.forEach((typeButton) => {
-    typeButton.addEventListener('pointerup', () => {
+    typeButton.addEventListener('click', () => {
       const type = typeButton.firstElementChild.innerText;
       if (selectedItem.includes(type)) {
         selectedItem.splice(selectedItem.indexOf(type), 1);
@@ -92,11 +94,11 @@ const printRecommandations = (list) => {
   checkListEmpty(list);
 };
 
-headerLogo.addEventListener('pointerup', () => {
+headerLogo.addEventListener('click', () => {
   location.reload();
 });
 
-resetButton.addEventListener('pointerup', () => {
+resetButton.addEventListener('click', () => {
   recommandation.classList.add('hidden');
   sendButton.disabled = true;
   setTimeout(() => {
