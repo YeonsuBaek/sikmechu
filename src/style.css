@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-lg font-bold;
+  }
+
+  button {
+    @apply rounded;
+  }
+}
+
+@layer components {
+  .pos-center {
+    @apply top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%];
+  }
+
+  .pos-full {
+    @apply top-0 bottom-0 left-0 right-0;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .blue-button {
+    @apply text-white bg-blue-primary hover:bg-blue-secondary active:bg-blue-tertiary;
+  }
+
+  .gray-button {
+    @apply bg-gray-primary hover:bg-gray-secondary active:bg-gray-tertiary;
+  }
+}
+
+@layer utilities {
+  .primary-button {
+    @apply w-full py-3 blue-button;
+  }
+
+  .secondary-button {
+    @apply gray-button flex-center;
+  }
+}
