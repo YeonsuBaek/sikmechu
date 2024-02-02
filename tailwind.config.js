@@ -1,22 +1,8 @@
-tailwind.config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {
-      colors: {
-        black: "#222222",
-        white: "#ffffff",
-        blue: "#1755DA",
-        darkBlue: "#1244AE",
-        gray: "#F4F4F4",
-      },
-      fontFamily: {
-        body: ["Noto Sans KR"],
-      },
-      width: {
-        half: "calc(50% - 4px)",
-      },
-      aspectRatio: {
-        "4/3": "4 / 3",
-      },
-    },
+    extend: {},
   },
-};
+  plugins: [],
+}
