@@ -7,68 +7,48 @@
     <title>식메추 | 식사 메뉴 추천해드려요</title>
   </head>
   <body>
-    <header class="fixed inset-0 z-20 flex items-center justify-center h-12 bg-white border-b-2 border-gray">
+    <header class="fixed inset-0 z-20 h-12 bg-white border-b-2 flex-center border-gray">
       <a href="/">
         <img class="h-7" src="./src/assets/logo.svg" alt="식메추" />
-      </button>
+      </a>
     </header>
 
     <!-- Options -->
-    <main class="mx-4 mb-8 pt-12 md:max-w-[600px] md:mx-auto md:my-0">
+    <main class="pt-12 mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
       <section>
-        <h1 class="mt-4 mb-2 text-lg font-bold">어떻게 먹을건가요?</h1>
+        <h1 class="mt-4 mb-2">어떻게 먹을건가요?</h1>
         <ul>
           <li class="inline-flex mb-4 mr-2">
-            <button
-              class="inline-flex items-center px-3 py-1 bg-[#f5f5f5] rounded option-button eat-type active:bg-[#0050b3] hover:bg-[#096dd9] active:text-white hover:text-white"
-              type="button"
-            >
+            <button class="px-3 py-1 secondary-button" type="button">
               <span>집밥 해먹기</span>
             </button>
           </li>
         </ul>
       </section>
-      <button
-        class="w-full py-3 text-white rounded mt-7 bg-[#1890ff] hover:bg-[#096dd9] active:bg-[#0050b3]"
-        type="button"
-      >
-        밥 먹을 준비 완료!
-      </button>
+      <button class="mt-7 primary-button" type="button">밥 먹을 준비 완료!</button>
     </main>
 
     <!-- Loading -->
-    <aside
-      class="hidden fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50 w-48 h-48 p-5 bg-white flex flex-col items-center rounded"
-    >
+    <aside class="fixed z-50 flex-col hidden w-48 h-48 p-5 bg-white rounded flex-center pos-center">
       <div class="relative w-10 h-10 m-auto animate-spin">
-        <i class="absolute inline-block bg-[#1890ff] rounded-full w-4 h-4 top-0 left-0 opacity-25"></i>
-        <i class="absolute inline-block bg-[#1890ff] rounded-full w-4 h-4 bottom-0 left-0 opacity-50"></i>
-        <i class="absolute inline-block bg-[#1890ff] rounded-full w-4 h-4 top-0 right-0 opacity-75"></i>
-        <i class="absolute inline-block bg-[#1890ff] rounded-full w-4 h-4 bottom-0 right-0"></i>
+        <i class="absolute top-0 left-0 inline-block w-4 h-4 rounded-full opacity-25 bg-blue-primary"></i>
+        <i class="absolute bottom-0 left-0 inline-block w-4 h-4 rounded-full opacity-50 bg-blue-primary"></i>
+        <i class="absolute top-0 right-0 inline-block w-4 h-4 rounded-full opacity-75 bg-blue-primary"></i>
+        <i class="absolute bottom-0 right-0 inline-block w-4 h-4 rounded-full bg-blue-primary"></i>
       </div>
       <p>메뉴 탐색 중...</p>
     </aside>
-    <aside class="absolute top-0 bottom-0 left-0 right-0 z-40 hidden bg-black opacity-20"></aside>
+    <aside class="fixed z-40 hidden bg-black pos-full opacity-20"></aside>
 
     <!-- Result -->
-    <main class="hidden mx-4 mb-8 pt-12 md:max-w-[600px] md:mx-auto md:my-0">
+    <main class="pt-12 mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
       <h1 class="mt-4 mb-2 text-lg font-bold">이런 메뉴는 어떠세요?</h1>
-      <ul class="grid grid-flow-row gap-2 max-[400px]:grid-cols-1 max-[900px]:grid-cols-3 min-[901px]:grid-cols-4">
+      <ul class="grid grid-flow-row grid-cols-4 gap-2 max-sm:grid-cols-1 max-md:grid-cols-3">
         <li>
-          <button
-            class="flex items-center justify-center px-2 py-1 w-full bg-[#f5f5f5] hover:bg-[#f0f0f0] active:bg-[#d9d9d9] rounded"
-            type="button"
-          >
-            메뉴
-          </button>
+          <button class="w-full px-2 py-1 secondary-button" type="button">메뉴</button>
         </li>
       </ul>
-      <button
-        class="w-full py-3 text-white rounded reset-button mt-7 bg-[#1890ff] hover:bg-[#096dd9] active:bg-[#0050b3]"
-        type="button"
-      >
-        다시 찾아보기
-      </button>
+      <button class="mt-7 primary-button" type="button">다시 찾아보기</button>
     </main>
 
     <div id="app"></div>
