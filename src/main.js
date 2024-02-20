@@ -31,6 +31,7 @@ const createSelectionElement = (id, selections) => {
 const createResultElement = (result) => {
   if (result.length > 0) {
     const element = document.createElement('div')
+    element.setAttribute('id', 'result-section')
     element.innerHTML += '<h1 class="mt-4 mb-2 text-lg font-bold">이런 메뉴는 어떠세요?</h1>'
     const menuElement = createMenuElement(result)
     element.appendChild(menuElement)
@@ -38,6 +39,7 @@ const createResultElement = (result) => {
   }
 
   const element = document.createElement('p')
+  element.setAttribute('id', 'result-section')
   element.innerText = '선택된 옵션에 맞는 메뉴를 찾을 수 없습니다.'
   return element
 }
@@ -88,6 +90,8 @@ function main() {
 
   const resetButton = document.querySelector('#reset-button')
   resetButton.addEventListener('click', () => {
+    const resultSection = resultContainer.querySelector('#result-section')
+    resultSection.remove()
     mainContainer.classList.remove('hidden')
     resultContainer.classList.add('hidden')
     selectedOption = options.reduce((acc, option) => {
