@@ -28,11 +28,11 @@ const createSelectionElement = (id, selections) => {
   return element
 }
 
-const createResultElement = () => {
-  if (menu.length > 0) {
+const createResultElement = (result) => {
+  if (result.length > 0) {
     const element = document.createElement('div')
     element.innerHTML += '<h1 class="mt-4 mb-2 text-lg font-bold">이런 메뉴는 어떠세요?</h1>'
-    const menuElement = createMenuElement()
+    const menuElement = createMenuElement(result)
     element.appendChild(menuElement)
     return element
   }
@@ -42,10 +42,10 @@ const createResultElement = () => {
   return element
 }
 
-const createMenuElement = () => {
+const createMenuElement = (result) => {
   const element = document.createElement('ul')
   element.classList.add(['grid', 'grid-flow-row', 'grid-cols-4', 'gap-2', 'max-sm:grid-cols-1', 'max-md:grid-cols-3'])
-  menu.forEach((item) => {
+  result.forEach((item) => {
     element.innerHTML += `
       <li>
         <button class="w-full px-2 py-1 secondary-button" type="button">${item.name}</button>
@@ -76,9 +76,14 @@ function main() {
     mainContainer.classList.add('hidden')
     resultContainer.classList.remove('hidden')
 
-    const resultElement = createResultElement()
+    const result = menu.filter((item) => {
+      return Object.keys(selectedOption).every((key) => {
+        return !selectedOption[key].length || selectedOption[key].some((value) => item[key].includes(value))
+      })
+    })
+
+    const resultElement = createResultElement(result)
     resultContainer.prepend(resultElement)
-    console.log(selectedOption)
   })
 
   const resetButton = document.querySelector('#reset-button')
