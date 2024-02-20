@@ -6,23 +6,22 @@ const createOptionElement = (option) => {
   element.innerHTML = `
       <div id="option">
         <h1 class="mt-4 mb-2">${option.question}</h1>
-        <ul id="selection"></ul>
       </div>
     `
-  const selectionsElement = element.querySelector('#selection')
-  const selectionElement = createSelectionElement(option.selection)
-  selectionsElement.appendChild(selectionElement)
+  const optionElement = element.querySelector('#option')
+  const selectionElement = createSelectionElement(option.id, option.selection)
+  optionElement.appendChild(selectionElement)
   return element
 }
 
-const createSelectionElement = (selections) => {
+const createSelectionElement = (id, selections) => {
   const element = document.createElement('ul')
   selections.forEach((selection) => {
     element.innerHTML += `
         <li class="inline-flex mb-4 mr-2">
-        <button class="px-3 py-1 secondary-button" type="button">
-            <span>${selection}</span>
-        </button>
+          <button data-option-id="${id}" data-selection-id="${selection.id}" class="selection-button px-3 py-1 secondary-button" type="button">
+            <span>${selection.name}</span>
+          </button>
         </li>
       `
   })
@@ -60,11 +59,17 @@ function main() {
   const mainContainer = document.querySelector('#main-container')
   const optionsElement = document.querySelector('#options')
   const resultContainer = document.querySelector('#result-container')
+  let selectedOption = options.reduce((acc, option) => {
+    acc[option.id] = []
+    return acc
+  }, {})
 
   options.forEach((option) => {
     const optionElement = createOptionElement(option)
     optionsElement.appendChild(optionElement)
   })
+
+  const selectionButton = document.querySelectorAll('.selection-button')
 
   const submitButton = document.querySelector('#submit-button')
   submitButton.addEventListener('click', () => {
@@ -73,12 +78,39 @@ function main() {
 
     const resultElement = createResultElement()
     resultContainer.prepend(resultElement)
+    console.log(selectedOption)
   })
 
   const resetButton = document.querySelector('#reset-button')
   resetButton.addEventListener('click', () => {
     mainContainer.classList.remove('hidden')
     resultContainer.classList.add('hidden')
+    selectedOption = options.reduce((acc, option) => {
+      acc[option.id] = []
+      return acc
+    }, {})
+
+    Array.from(selectionButton).forEach((button) => {
+      button.classList.remove('blue-button')
+      button.classList.add('secondary-button')
+    })
+  })
+
+  Array.from(selectionButton).forEach((button) => {
+    button.addEventListener('click', () => {
+      const option = button.getAttribute('data-option-id')
+      const selection = button.getAttribute('data-selection-id')
+
+      if (selectedOption[option].includes(selection)) {
+        selectedOption[option] = selectedOption[option].filter((item) => item !== selection)
+        button.classList.remove('blue-button')
+        button.classList.add('secondary-button')
+      } else {
+        selectedOption[option].push(selection)
+        button.classList.remove('secondary-button')
+        button.classList.add('blue-button')
+      }
+    })
   })
 }
 

@@ -2,36 +2,72 @@
   {
     "id": "how_to_eat",
     "question": "어떻게 먹을 건가요?",
-    "selection": ["집밥", "사먹기"]
+    "selection": [
+      { "id": "0", "name": "집밥" },
+      { "id": "1", "name": "사먹기" }
+    ]
   },
   {
     "id": "what_to_eat",
     "question": "어떤 종류를 먹을까요?",
-    "selection": ["한식", "중식", "일식", "분식", "양식", "아시안"]
+    "selection": [
+      { "id": "0", "name": "한식" },
+      { "id": "1", "name": "중식" },
+      { "id": "2", "name": "일식" },
+      { "id": "3", "name": "분식" },
+      { "id": "4", "name": "양식" },
+      { "id": "5", "name": "아시안" }
+    ]
   },
   {
     "id": "when_to_eat",
     "question": "언제 먹을까요?",
-    "selection": ["아침", "점심", "저녁", "간식", "야식"]
+    "selection": [
+      { "id": "0", "name": "아침" },
+      { "id": "1", "name": "점심" },
+      { "id": "2", "name": "저녁" },
+      { "id": "3", "name": "간식" },
+      { "id": "4", "name": "야식" }
+    ]
   },
   {
     "id": "ingredients",
     "question": "어떤 재료를 넣을까요?",
-    "selection": ["고기", "해산물", "채소", "과일"]
+    "selection": [
+      { "id": "0", "name": "고기" },
+      { "id": "1", "name": "해산물" },
+      { "id": "2", "name": "채소" },
+      { "id": "3", "name": "과일" }
+    ]
   },
   {
     "id": "carbs_type",
     "question": "어떤 종류의 탄수화물을 먹을까요?",
-    "selection": ["밥", "빵", "면", "떡", "튀김", "탄수화물 없이"]
+    "selection": [
+      { "id": "0", "name": "밥" },
+      { "id": "1", "name": "빵" },
+      { "id": "2", "name": "면" },
+      { "id": "3", "name": "떡" },
+      { "id": "4", "name": "튀김" },
+      { "id": "5", "name": "탄수화물 없이" }
+    ]
   },
   {
     "id": "spiciness_level",
     "question": "맵기는 어느 정도로 할까요?",
-    "selection": ["순한 맛", "중간 맛", "매운 맛"]
+    "selection": [
+      { "id": "0", "name": "순한 맛" },
+      { "id": "1", "name": "중간 맛" },
+      { "id": "2", "name": "매운 맛" }
+    ]
   },
   {
     "id": "portion_size",
     "question": "몇 명이 먹나요?",
-    "selection": ["1명", "2-4명", "단체"]
+    "selection": [
+      { "id": "0", "name": "1명" },
+      { "id": "1", "name": "2-4명" },
+      { "id": "2", "name": "단체" }
+    ]
   }
 ]
