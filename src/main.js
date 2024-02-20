@@ -29,11 +29,25 @@ const createSelectionElement = (selections) => {
 }
 
 function main() {
+  const mainContainer = document.querySelector('#main-container')
   const optionsElement = document.querySelector('#options')
+  const resultContainer = document.querySelector('#result-container')
 
   options.forEach((option) => {
     const optionElement = createOptionElement(option)
     optionsElement.appendChild(optionElement)
+  })
+
+  const submitButton = document.querySelector('#submit-button')
+  submitButton.addEventListener('click', () => {
+    mainContainer.classList.add('hidden')
+    resultContainer.classList.remove('hidden')
+  })
+
+  const resetButton = document.querySelector('#reset-button')
+  resetButton.addEventListener('click', () => {
+    mainContainer.classList.remove('hidden')
+    resultContainer.classList.add('hidden')
   })
 }
 
