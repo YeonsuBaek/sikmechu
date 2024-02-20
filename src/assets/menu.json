@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "name": "제육복음",
+    "how_to_eat": ["집밥", "사먹기"],
+    "what_to_eat": ["한식"],
+    "when_to_eat": ["점심", "저녁"],
+    "ingredients": ["고기"],
+    "carbs_type": ["밥"],
+    "spiciness_level": ["중간 맛", "매운 맛"],
+    "portion_size": ["1명", "2-4명", "단체"]
+  }
+]
