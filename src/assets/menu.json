@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "name": "제육복음",
+    "how_to_eat": ["0", "1"],
+    "what_to_eat": ["0"],
+    "when_to_eat": ["1", "2"],
+    "ingredients": ["0"],
+    "carbs_type": ["0"],
+    "spiciness_level": ["1", "2"],
+    "portion_size": ["0", "1", "2"]
+  }
+]
