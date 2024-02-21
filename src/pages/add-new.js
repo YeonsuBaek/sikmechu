@@ -1,4 +1,5 @@
 import options from '../assets/options.json'
+import { goto } from '../lib/router'
 
 const createOptionElement = (option) => {
   const element = document.createElement('div')
@@ -34,15 +35,21 @@ function renderAddMenu() {
       <input class="w-full outline-0 overflow-hidden" type='text' placeholder="예: 불고기, 새우볶음밥, 마라탕" />
       <h1 class="mt-4 mb-2">옵션 설정하기</h1>
       <section id="add-options"></section>
-      <button id="submit-button" class="mt-7 primary-button" type="button">메뉴 추가하기</button>
+      <button id="submit-button" class="mt-7 mb-2 primary-button" type="button">메뉴 추가하기</button>
+      <button id="home-button" class="w-full py-3 secondary-button" type="button">홈으로 돌아가기</button>
     </main>
     `
   const addContainer = document.querySelector('#add-container')
   const optionsElement = document.querySelector('#add-options')
+  const homeButton = document.querySelector('#home-button')
 
   options.forEach((option) => {
     const optionElement = createOptionElement(option)
     optionsElement.appendChild(optionElement)
+  })
+
+  homeButton.addEventListener('click', () => {
+    goto('/')
   })
 }
 
