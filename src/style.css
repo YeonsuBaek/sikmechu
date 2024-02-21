@@ -32,6 +32,10 @@
   .gray-button {
     @apply bg-gray-primary hover:bg-gray-secondary active:bg-gray-tertiary;
   }
+
+  .red-button {
+    @apply text-white bg-red-primary hover:bg-red-secondary active:bg-red-tertiary;
+  }
 }
 
 @layer utilities {
