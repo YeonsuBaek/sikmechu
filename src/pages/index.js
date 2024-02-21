@@ -1,5 +1,6 @@
 import options from '../assets/options.json'
 import menu from '../assets/menu.json'
+import { goto } from '../lib/router'
 
 const createOptionElement = (option) => {
   const element = document.createElement('div')
@@ -60,7 +61,7 @@ const createMenuElement = (result) => {
 function renderIndex() {
   document.querySelector('#app').innerHTML = `
         <!-- Options -->
-        <main id="main-container" class="pt-12 mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
+        <main id="main-container" class="mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
         <section id="options"></section>
         <button id="submit-button" class="mt-7 primary-button" type="button">밥 먹을 준비 완료!</button>
         </main>
@@ -79,8 +80,8 @@ function renderIndex() {
 
         <!-- Result -->
         <main id="result-container" class="hidden pt-12 mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
-        <button id="reset-button" class="mt-7 primary-button" type="button">다시 찾아보기</button>
-        <button id="add-button" type="button">새로운 메뉴 추가하기</button>
+        <button id="reset-button" class="mt-7 mb-2 primary-button" type="button">다시 찾아보기</button>
+        <button id="add-button" class="w-full py-3 red-button" type="button">새로운 메뉴 추가하기</button>
         </main>
     `
 
