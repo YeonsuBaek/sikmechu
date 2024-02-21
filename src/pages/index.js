@@ -1,62 +1,8 @@
 import options from '../assets/options.json'
 import menu from '../assets/menu.json'
 import { goto } from '../lib/router'
-
-const createOptionElement = (option) => {
-  const element = document.createElement('div')
-  element.innerHTML = `
-        <div id="option">
-          <h1 class="mt-4 mb-2">${option.question}</h1>
-        </div>
-      `
-  const optionElement = element.querySelector('#option')
-  const selectionElement = createSelectionElement(option.id, option.selection)
-  optionElement.appendChild(selectionElement)
-  return element
-}
-
-const createSelectionElement = (id, selections) => {
-  const element = document.createElement('ul')
-  selections.forEach((selection) => {
-    element.innerHTML += `
-          <li class="inline-flex mb-4 mr-2">
-            <button data-option-id="${id}" data-selection-id="${selection.id}" class="selection-button px-3 py-1 secondary-button" type="button">
-              <span>${selection.name}</span>
-            </button>
-          </li>
-        `
-  })
-  return element
-}
-
-const createResultElement = (result) => {
-  if (result.length > 0) {
-    const element = document.createElement('div')
-    element.setAttribute('id', 'result-section')
-    element.innerHTML += '<h1 class="mt-4 mb-2 text-lg font-bold">이런 메뉴는 어떠세요?</h1>'
-    const menuElement = createMenuElement(result)
-    element.appendChild(menuElement)
-    return element
-  }
-
-  const element = document.createElement('p')
-  element.setAttribute('id', 'result-section')
-  element.innerText = '선택된 옵션에 맞는 메뉴를 찾을 수 없습니다.'
-  return element
-}
-
-const createMenuElement = (result) => {
-  const element = document.createElement('ul')
-  element.classList.add(['grid', 'grid-flow-row', 'grid-cols-4', 'gap-2', 'max-sm:grid-cols-1', 'max-md:grid-cols-3'])
-  result.forEach((item) => {
-    element.innerHTML += `
-        <li>
-          <button class="w-full px-2 py-1 secondary-button" type="button">${item.name}</button>
-        </li>
-      `
-  })
-  return element
-}
+import { createOptionElement } from '../components/option'
+import { createResultElement } from '../components/result'
 
 function renderIndex() {
   document.querySelector('#app').innerHTML = `

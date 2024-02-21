@@ -1,32 +1,6 @@
 import options from '../assets/options.json'
 import { goto } from '../lib/router'
-
-const createOptionElement = (option) => {
-  const element = document.createElement('div')
-  element.innerHTML = `
-          <div id="add-option">
-            <h2 class="mt-4 mb-2 font-bold">${option.question}</h2>
-          </div>
-        `
-  const optionElement = element.querySelector('#add-option')
-  const selectionElement = createSelectionElement(option.id, option.selection)
-  optionElement.appendChild(selectionElement)
-  return element
-}
-
-const createSelectionElement = (id, selections) => {
-  const element = document.createElement('ul')
-  selections.forEach((selection) => {
-    element.innerHTML += `
-            <li class="inline-flex mb-4 mr-2">
-              <button data-option-id="${id}" data-selection-id="${selection.id}" class="selection-button px-3 py-1 secondary-button" type="button">
-                <span>${selection.name}</span>
-              </button>
-            </li>
-          `
-  })
-  return element
-}
+import { createOptionElement } from '../components/option'
 
 function renderAddMenu() {
   document.querySelector('#app').innerHTML = `
