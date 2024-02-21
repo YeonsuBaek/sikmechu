@@ -1,8 +1,6 @@
 import options from '../assets/options.json'
-import menu from '../assets/menu.json'
 import { goto } from '../lib/router'
 import { createOptionElement } from '../components/option'
-import { createResultElement } from '../components/result'
 
 function renderIndex() {
   document.querySelector('#app').innerHTML = `
@@ -23,17 +21,9 @@ function renderIndex() {
         <p>메뉴 탐색 중...</p>
         </aside>
         <aside class="fixed z-40 hidden bg-black pos-full opacity-20"></aside>
-
-        <!-- Result -->
-        <main id="result-container" class="hidden pt-12 mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
-        <button id="reset-button" class="mt-7 mb-2 primary-button" type="button">다시 찾아보기</button>
-        <button id="add-button" class="w-full py-3 red-button" type="button">새로운 메뉴 추가하기</button>
-        </main>
     `
 
-  const mainContainer = document.querySelector('#main-container')
   const optionsElement = document.querySelector('#options')
-  const resultContainer = document.querySelector('#result-container')
   let selectedOption = options.reduce((acc, option) => {
     acc[option.id] = []
     return acc
@@ -44,40 +34,12 @@ function renderIndex() {
     optionsElement.appendChild(optionElement)
   })
 
-  const selectionButton = document.querySelectorAll('.selection-button')
-
   const submitButton = document.querySelector('#submit-button')
   submitButton.addEventListener('click', () => {
-    mainContainer.classList.add('hidden')
-    resultContainer.classList.remove('hidden')
-
-    const result = menu.filter((item) => {
-      return Object.keys(selectedOption).every((key) => {
-        return !selectedOption[key].length || selectedOption[key].some((value) => item[key].includes(value))
-      })
-    })
-
-    const resultElement = createResultElement(result)
-    resultContainer.prepend(resultElement)
+    goto(`/result?query=${JSON.stringify(selectedOption)}`)
   })
 
-  const resetButton = document.querySelector('#reset-button')
-  resetButton.addEventListener('click', () => {
-    const resultSection = resultContainer.querySelector('#result-section')
-    resultSection.remove()
-    mainContainer.classList.remove('hidden')
-    resultContainer.classList.add('hidden')
-    selectedOption = options.reduce((acc, option) => {
-      acc[option.id] = []
-      return acc
-    }, {})
-
-    Array.from(selectionButton).forEach((button) => {
-      button.classList.remove('blue-button')
-      button.classList.add('secondary-button')
-    })
-  })
-
+  const selectionButton = document.querySelectorAll('.selection-button')
   Array.from(selectionButton).forEach((button) => {
     button.addEventListener('click', () => {
       const option = button.getAttribute('data-option-id')
@@ -93,11 +55,6 @@ function renderIndex() {
         button.classList.add('blue-button')
       }
     })
-  })
-
-  const addButton = document.querySelector('#add-button')
-  addButton.addEventListener('click', () => {
-    goto('/add-menu')
   })
 }
 
