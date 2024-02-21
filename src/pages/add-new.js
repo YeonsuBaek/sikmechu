@@ -78,13 +78,18 @@ function renderAddMenu() {
 
   saveButton.addEventListener('click', () => {
     const menuName = document.querySelector('#menu-name').value
-    const newMenu = {
-      id: Math.round(Math.random() * 1000000),
-      name: menuName,
-      ...selectedOption,
+
+    if (menuName.trim() === '') {
+      alert('메뉴 이름을 입력해주세요!')
+    } else {
+      const newMenu = {
+        id: Math.round(Math.random() * 1000000),
+        name: menuName,
+        ...selectedOption,
+      }
+      console.log(newMenu)
+      goto('/')
     }
-    console.log(newMenu)
-    goto('/')
   })
 }
 
