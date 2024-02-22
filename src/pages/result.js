@@ -1,5 +1,5 @@
 import menu from '../assets/menu'
-import { createResultElement } from '../components/result'
+import { createResultElement } from '../components/elements/result'
 import { goto } from '../lib/router'
 
 function renderResult({ searchParams }) {

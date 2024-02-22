@@ -1,6 +1,6 @@
 import options from '../assets/options.json'
 import { goto } from '../lib/router'
-import { createOptionElement } from '../components/option'
+import { createOptionElement } from '../components/elements/option'
 
 function renderIndex() {
   document.querySelector('#app').innerHTML = `
