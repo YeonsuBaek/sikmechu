@@ -1,6 +1,6 @@
 import options from '../assets/options.json'
 import { goto } from '../lib/router'
-import { renderOptions } from '../components/elements/option'
+import { renderOptions, toggleOptionButton } from '../components/elements/option'
 
 function renderAddMenu() {
   document.querySelector('#app').innerHTML = `
@@ -20,28 +20,13 @@ function renderAddMenu() {
 
   renderOptions(optionsElement)
 
-  const selectionButton = document.querySelectorAll('.selection-button')
+  const selectionButtons = document.querySelectorAll('.selection-button')
   let selectedOptions = options.reduce((acc, option) => {
     acc[option.id] = []
     return acc
   }, {})
 
-  Array.from(selectionButton).forEach((button) => {
-    button.addEventListener('click', () => {
-      const option = button.getAttribute('data-option-id')
-      const selection = button.getAttribute('data-selection-id')
-
-      if (selectedOptions[option].includes(selection)) {
-        selectedOptions[option] = selectedOptions[option].filter((item) => item !== selection)
-        button.classList.remove('blue-button')
-        button.classList.add('secondary-button')
-      } else {
-        selectedOptions[option].push(selection)
-        button.classList.remove('secondary-button')
-        button.classList.add('blue-button')
-      }
-    })
-  })
+  toggleOptionButton(selectionButtons, selectedOptions)
 
   homeButton.addEventListener('click', () => {
     goto('/')
@@ -56,7 +41,7 @@ function renderAddMenu() {
       const newMenu = {
         id: Math.round(Math.random() * 1000000),
         name: menuName,
-        ...selectedOption,
+        ...selectedOptions,
       }
       console.log(newMenu)
       goto('/')

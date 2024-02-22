@@ -34,4 +34,32 @@ function renderOptions(element) {
   })
 }
 
-export { renderOptions }
+const toggleButtonStyle = (button, isSelected) => {
+  if (isSelected) {
+    button.classList.remove('blue-button')
+    button.classList.remove('secondary-button')
+  } else {
+    button.classList.add('blue-button')
+    button.classList.remove('secondary-button')
+  }
+}
+
+function toggleOptionButton(buttons, selectors) {
+  Array.from(buttons).forEach((button) => {
+    button.addEventListener('click', () => {
+      const option = button.getAttribute('data-option-id')
+      const selection = button.getAttribute('data-selection-id')
+      const isSelected = selectors[option].includes(selection)
+
+      toggleButtonStyle(button, isSelected)
+
+      if (isSelected) {
+        selectors[option] = selectors[option].filter((item) => item !== selection)
+      } else {
+        selectors[option].push(selection)
+      }
+    })
+  })
+}
+
+export { renderOptions, toggleOptionButton }
