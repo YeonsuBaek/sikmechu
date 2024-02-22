@@ -17,7 +17,7 @@ const goto = (url, { push } = {}) => {
     routes[pathname]({ searchParams: params })
     return
   } else {
-    location.href = url
+    goto('/404')
   }
 }
 

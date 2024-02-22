@@ -1,32 +1,6 @@
 import options from '../assets/options.json'
 import { goto } from '../lib/router'
-
-const createOptionElement = (option) => {
-  const element = document.createElement('div')
-  element.innerHTML = `
-          <div id="add-option">
-            <h2 class="mt-4 mb-2 font-bold">${option.question}</h2>
-          </div>
-        `
-  const optionElement = element.querySelector('#add-option')
-  const selectionElement = createSelectionElement(option.id, option.selection)
-  optionElement.appendChild(selectionElement)
-  return element
-}
-
-const createSelectionElement = (id, selections) => {
-  const element = document.createElement('ul')
-  selections.forEach((selection) => {
-    element.innerHTML += `
-            <li class="inline-flex mb-4 mr-2">
-              <button data-option-id="${id}" data-selection-id="${selection.id}" class="selection-button px-3 py-1 secondary-button" type="button">
-                <span>${selection.name}</span>
-              </button>
-            </li>
-          `
-  })
-  return element
-}
+import { renderOptions, toggleOptionButton } from '../components/elements/option'
 
 function renderAddMenu() {
   document.querySelector('#app').innerHTML = `
@@ -39,38 +13,20 @@ function renderAddMenu() {
       <button id="home-button" class="w-full py-3 secondary-button" type="button">홈으로 돌아가기</button>
     </main>
     `
-  const addContainer = document.querySelector('#add-container')
+
   const optionsElement = document.querySelector('#add-options')
   const homeButton = document.querySelector('#home-button')
   const saveButton = document.querySelector('#save-button')
 
-  options.forEach((option) => {
-    const optionElement = createOptionElement(option)
-    optionsElement.appendChild(optionElement)
-  })
+  renderOptions(optionsElement)
 
-  const selectionButton = document.querySelectorAll('.selection-button')
-  let selectedOption = options.reduce((acc, option) => {
+  const selectionButtons = document.querySelectorAll('.selection-button')
+  let selectedOptions = options.reduce((acc, option) => {
     acc[option.id] = []
     return acc
   }, {})
 
-  Array.from(selectionButton).forEach((button) => {
-    button.addEventListener('click', () => {
-      const option = button.getAttribute('data-option-id')
-      const selection = button.getAttribute('data-selection-id')
-
-      if (selectedOption[option].includes(selection)) {
-        selectedOption[option] = selectedOption[option].filter((item) => item !== selection)
-        button.classList.remove('blue-button')
-        button.classList.add('secondary-button')
-      } else {
-        selectedOption[option].push(selection)
-        button.classList.remove('secondary-button')
-        button.classList.add('blue-button')
-      }
-    })
-  })
+  toggleOptionButton(selectionButtons, selectedOptions)
 
   homeButton.addEventListener('click', () => {
     goto('/')
@@ -85,7 +41,7 @@ function renderAddMenu() {
       const newMenu = {
         id: Math.round(Math.random() * 1000000),
         name: menuName,
-        ...selectedOption,
+        ...selectedOptions,
       }
       console.log(newMenu)
       goto('/')
