@@ -1,6 +1,6 @@
 import options from '../assets/options.json'
 import { goto } from '../lib/router'
-import { createOptionElement } from '../components/elements/option'
+import { renderOptions } from '../components/elements/option'
 
 function renderIndex() {
   document.querySelector('#app').innerHTML = `
@@ -11,19 +11,15 @@ function renderIndex() {
     `
 
   const optionsElement = document.querySelector('#options')
-  let selectedOption = options.reduce((acc, option) => {
+  renderOptions(optionsElement)
+
+  const selectedOptions = options.reduce((acc, option) => {
     acc[option.id] = []
     return acc
   }, {})
-
-  options.forEach((option) => {
-    const optionElement = createOptionElement(option)
-    optionsElement.appendChild(optionElement)
-  })
-
   const submitButton = document.querySelector('#submit-button')
   submitButton.addEventListener('click', () => {
-    goto(`/result?query=${JSON.stringify(selectedOption)}`)
+    goto(`/result?query=${JSON.stringify(selectedOptions)}`)
   })
 
   const selectionButton = document.querySelectorAll('.selection-button')
@@ -32,12 +28,12 @@ function renderIndex() {
       const option = button.getAttribute('data-option-id')
       const selection = button.getAttribute('data-selection-id')
 
-      if (selectedOption[option].includes(selection)) {
-        selectedOption[option] = selectedOption[option].filter((item) => item !== selection)
+      if (selectedOptions[option].includes(selection)) {
+        selectedOptions[option] = selectedOptions[option].filter((item) => item !== selection)
         button.classList.remove('blue-button')
         button.classList.add('secondary-button')
       } else {
-        selectedOption[option].push(selection)
+        selectedOptions[option].push(selection)
         button.classList.remove('secondary-button')
         button.classList.add('blue-button')
       }

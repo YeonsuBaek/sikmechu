@@ -1,3 +1,5 @@
+import options from '../../assets/options.json'
+
 const createSelectionElement = (id, selections) => {
   const element = document.createElement('ul')
   selections.forEach((selection) => {
@@ -25,4 +27,11 @@ function createOptionElement(option) {
   return element
 }
 
-export { createOptionElement }
+function renderOptions(element) {
+  options.forEach((option) => {
+    const optionElement = createOptionElement(option)
+    element.appendChild(optionElement)
+  })
+}
+
+export { renderOptions }

@@ -1,6 +1,6 @@
 import options from '../assets/options.json'
 import { goto } from '../lib/router'
-import { createOptionElement } from '../components/elements/option'
+import { renderOptions } from '../components/elements/option'
 
 function renderAddMenu() {
   document.querySelector('#app').innerHTML = `
@@ -13,18 +13,15 @@ function renderAddMenu() {
       <button id="home-button" class="w-full py-3 secondary-button" type="button">홈으로 돌아가기</button>
     </main>
     `
-  const addContainer = document.querySelector('#add-container')
+
   const optionsElement = document.querySelector('#add-options')
   const homeButton = document.querySelector('#home-button')
   const saveButton = document.querySelector('#save-button')
 
-  options.forEach((option) => {
-    const optionElement = createOptionElement(option)
-    optionsElement.appendChild(optionElement)
-  })
+  renderOptions(optionsElement)
 
   const selectionButton = document.querySelectorAll('.selection-button')
-  let selectedOption = options.reduce((acc, option) => {
+  let selectedOptions = options.reduce((acc, option) => {
     acc[option.id] = []
     return acc
   }, {})
@@ -34,12 +31,12 @@ function renderAddMenu() {
       const option = button.getAttribute('data-option-id')
       const selection = button.getAttribute('data-selection-id')
 
-      if (selectedOption[option].includes(selection)) {
-        selectedOption[option] = selectedOption[option].filter((item) => item !== selection)
+      if (selectedOptions[option].includes(selection)) {
+        selectedOptions[option] = selectedOptions[option].filter((item) => item !== selection)
         button.classList.remove('blue-button')
         button.classList.add('secondary-button')
       } else {
-        selectedOption[option].push(selection)
+        selectedOptions[option].push(selection)
         button.classList.remove('secondary-button')
         button.classList.add('blue-button')
       }
