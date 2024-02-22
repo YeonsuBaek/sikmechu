@@ -1,6 +1,6 @@
 import options from '../../assets/options.json'
 
-const createSelectionElement = (id, selections) => {
+function createSelectionElement(id, selections) {
   const element = document.createElement('ul')
   selections.forEach((selection) => {
     element.innerHTML += `
@@ -34,7 +34,7 @@ function renderOptions(element) {
   })
 }
 
-const toggleButtonStyle = (button, isSelected) => {
+function toggleButtonStyle(button, isSelected) {
   if (isSelected) {
     button.classList.remove('blue-button')
     button.classList.remove('secondary-button')

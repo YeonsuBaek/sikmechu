@@ -15,11 +15,12 @@ function renderIndex() {
 
   const submitButton = document.querySelector('#submit-button')
   submitButton.addEventListener('click', () => {
-    goto(`/result?query=${JSON.stringify(selectedOptions)}`)
+    const query = JSON.stringify(selectedOptions)
+    goto(`/result?query=${query}`)
   })
 
   const selectionButtons = document.querySelectorAll('.selection-button')
-  let selectedOptions = options.reduce((acc, option) => {
+  const selectedOptions = options.reduce((acc, option) => {
     acc[option.id] = []
     return acc
   }, {})
