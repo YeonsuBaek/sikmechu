@@ -1,5 +1,3 @@
-import options from '../../assets/options.json'
-
 function createSelectionElement(id, selections) {
   const element = document.createElement('ul')
   selections.forEach((selection) => {
@@ -27,17 +25,23 @@ function createOptionElement(option) {
   return element
 }
 
-function renderOptions(element) {
-  options.forEach((option) => {
-    const optionElement = createOptionElement(option)
-    element.appendChild(optionElement)
-  })
+function renderOptions(element, options) {
+  if (options) {
+    options.forEach((option) => {
+      const optionElement = createOptionElement(option)
+      element.appendChild(optionElement)
+    })
+  } else {
+    const errorElement = document.createElement('p')
+    errorElement.innerText = '서버에 문제가 생겼어요! 옵션을 불러올 수 없어요!'
+    element.appendChild(errorElement)
+  }
 }
 
 function toggleButtonStyle(button, isSelected) {
   if (isSelected) {
     button.classList.remove('blue-button')
-    button.classList.remove('secondary-button')
+    button.classList.add('secondary-button')
   } else {
     button.classList.add('blue-button')
     button.classList.remove('secondary-button')

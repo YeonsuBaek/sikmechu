@@ -1,8 +1,8 @@
-import options from '../assets/options.json'
 import { goto } from '../lib/router'
 import { renderOptions, toggleOptionButton } from '../components/elements/option'
+import { getOptions } from '../api/options'
 
-function renderIndex() {
+async function renderIndex() {
   document.querySelector('#app').innerHTML = `
       <main id="main-container" class="mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
         <section id="options"></section>
@@ -11,7 +11,8 @@ function renderIndex() {
     `
 
   const optionsElement = document.querySelector('#options')
-  renderOptions(optionsElement)
+  const options = await getOptions()
+  renderOptions(optionsElement, options)
 
   const submitButton = document.querySelector('#submit-button')
   submitButton.addEventListener('click', () => {

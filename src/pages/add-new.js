@@ -1,8 +1,8 @@
-import options from '../assets/options.json'
 import { goto } from '../lib/router'
 import { renderOptions, toggleOptionButton } from '../components/elements/option'
+import { getOptions } from '../api/options'
 
-function renderAddMenu() {
+async function renderAddMenu() {
   document.querySelector('#app').innerHTML = `
     <main id="add-container" class="w-[calc(100% - 32px)] mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
       <h1 class="mt-4 mb-2">메뉴 이름</h1>
@@ -18,7 +18,8 @@ function renderAddMenu() {
   const homeButton = document.querySelector('#home-button')
   const saveButton = document.querySelector('#save-button')
 
-  renderOptions(optionsElement)
+  const options = await getOptions()
+  renderOptions(optionsElement, options)
 
   const selectionButtons = document.querySelectorAll('.selection-button')
   let selectedOptions = options.reduce((acc, option) => {
