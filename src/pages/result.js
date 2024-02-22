@@ -1,8 +1,8 @@
-import menu from '../assets/menu'
+import { getMenu } from '../api/menu'
 import { createResultElement } from '../components/elements/result'
 import { goto } from '../lib/router'
 
-function renderResult({ searchParams }) {
+async function renderResult({ searchParams }) {
   document.querySelector('#app').innerHTML = `
     <main id="result-container" class="mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
       <button id="reset-button" class="mt-7 mb-2 primary-button" type="button">다시 찾아보기</button>
@@ -12,6 +12,7 @@ function renderResult({ searchParams }) {
 
   const resultContainer = document.querySelector('#result-container')
   const selectedOption = JSON.parse(searchParams.query)
+  const menu = await getMenu()
   const result = menu.filter((item) => {
     return Object.keys(selectedOption).every((key) => {
       return !selectedOption[key].length || selectedOption[key].some((value) => item[key].includes(value))
