@@ -3,6 +3,7 @@ import { renderOptions, toggleOptionButton } from '../components/elements/option
 import { getOptions } from '../api/options'
 import { arrayUnion, collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
+import { saveMenu } from '../api/menu'
 
 /**
  * 새로운 메뉴 추가 페이지를 렌더링한다.
@@ -52,25 +53,6 @@ async function renderAddMenu() {
       saveMenu(newMenu)
     }
   })
-}
-
-/**
- * 새로운 메뉴를 데이터베이스에 저장한다.
- *
- * @param {Object.<string, (string | string[])>} newMenu
- */
-async function saveMenu(newMenu) {
-  try {
-    const collectionRef = collection(db, 'sikmechu')
-    const docRef = doc(collectionRef, 'menu')
-    await updateDoc(docRef, {
-      menu: arrayUnion(newMenu),
-    })
-    goto('/')
-  } catch (error) {
-    setError(error)
-    alert('메뉴를 추가하는 데 실패하였습니다.')
-  }
 }
 
 export { renderAddMenu }
