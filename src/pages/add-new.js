@@ -1,8 +1,10 @@
-import options from '../assets/options.json'
 import { goto } from '../lib/router'
 import { renderOptions, toggleOptionButton } from '../components/elements/option'
+import { getOptions } from '../api/options'
+import { arrayUnion, collection, doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../firebase.config'
 
-function renderAddMenu() {
+async function renderAddMenu() {
   document.querySelector('#app').innerHTML = `
     <main id="add-container" class="w-[calc(100% - 32px)] mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
       <h1 class="mt-4 mb-2">메뉴 이름</h1>
@@ -18,7 +20,8 @@ function renderAddMenu() {
   const homeButton = document.querySelector('#home-button')
   const saveButton = document.querySelector('#save-button')
 
-  renderOptions(optionsElement)
+  const options = await getOptions()
+  renderOptions(optionsElement, options)
 
   const selectionButtons = document.querySelectorAll('.selection-button')
   let selectedOptions = options.reduce((acc, option) => {
@@ -43,10 +46,23 @@ function renderAddMenu() {
         name: menuName,
         ...selectedOptions,
       }
-      console.log(newMenu)
-      goto('/')
+      saveMenu(newMenu)
     }
   })
+}
+
+async function saveMenu(newMenu) {
+  try {
+    const collectionRef = collection(db, 'sikmechu')
+    const docRef = doc(collectionRef, 'menu')
+    await updateDoc(docRef, {
+      menu: arrayUnion(newMenu),
+    })
+    goto('/')
+  } catch (error) {
+    setError(error)
+    alert('메뉴를 추가하는 데 실패하였습니다.')
+  }
 }
 
 export { renderAddMenu }
