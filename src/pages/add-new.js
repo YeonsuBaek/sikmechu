@@ -1,6 +1,8 @@
 import { goto } from '../lib/router'
 import { renderOptions, toggleOptionButton } from '../components/elements/option'
 import { getOptions } from '../api/options'
+import { arrayUnion, collection, doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../firebase.config'
 
 async function renderAddMenu() {
   document.querySelector('#app').innerHTML = `
@@ -44,10 +46,23 @@ async function renderAddMenu() {
         name: menuName,
         ...selectedOptions,
       }
-      console.log(newMenu)
-      goto('/')
+      saveMenu(newMenu)
     }
   })
+}
+
+async function saveMenu(newMenu) {
+  try {
+    const collectionRef = collection(db, 'sikmechu')
+    const docRef = doc(collectionRef, 'menu')
+    await updateDoc(docRef, {
+      menu: arrayUnion(newMenu),
+    })
+    goto('/')
+  } catch (error) {
+    setError(error)
+    alert('메뉴를 추가하는 데 실패하였습니다.')
+  }
 }
 
 export { renderAddMenu }
