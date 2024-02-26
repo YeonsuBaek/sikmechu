@@ -2,6 +2,9 @@ import { goto } from '../lib/router'
 import { renderOptions, toggleOptionButton } from '../components/elements/option'
 import { getOptions } from '../api/options'
 
+/**
+ * 첫 페이지를 렌더링한다.
+ */
 async function renderIndex() {
   document.querySelector('#app').innerHTML = `
       <main id="main-container" class="mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">

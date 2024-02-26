@@ -1,5 +1,10 @@
 import { createMenuElement } from './menu'
 
+/**
+ *
+ * @param {Object.<string, (string | string[])>[]} result 선택 결과에 대한 메뉴 리스트
+ * @returns {Element}
+ */
 function createResultElement(result) {
   if (result.length > 0) {
     const element = document.createElement('div')

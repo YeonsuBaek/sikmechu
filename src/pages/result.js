@@ -2,6 +2,12 @@ import { getMenu } from '../api/menu'
 import { createResultElement } from '../components/elements/result'
 import { goto } from '../lib/router'
 
+/**
+ * 결과 화면을 렌더링한다.
+ *
+ * @param {Object} searchParams
+ * @param {string} searchParams.query
+ */
 async function renderResult({ searchParams }) {
   document.querySelector('#app').innerHTML = `
     <main id="result-container" class="mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">

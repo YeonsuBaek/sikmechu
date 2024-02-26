@@ -4,6 +4,9 @@ import { getOptions } from '../api/options'
 import { arrayUnion, collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 
+/**
+ * 새로운 메뉴 추가 페이지를 렌더링한다.
+ */
 async function renderAddMenu() {
   document.querySelector('#app').innerHTML = `
     <main id="add-container" class="w-[calc(100% - 32px)] mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
@@ -51,6 +54,11 @@ async function renderAddMenu() {
   })
 }
 
+/**
+ * 새로운 메뉴를 데이터베이스에 저장한다.
+ *
+ * @param {Object.<string, (string | string[])>} newMenu
+ */
 async function saveMenu(newMenu) {
   try {
     const collectionRef = collection(db, 'sikmechu')
