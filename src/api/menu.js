@@ -2,7 +2,7 @@ import { arrayUnion, collection, doc, getDoc, updateDoc } from 'firebase/firesto
 import { db } from '../../firebase.config'
 import { hideLoading, showLoading } from '../components/modal/loading'
 import { goto } from '../lib/router'
-import { showPopover } from '../components/toast/new-menu'
+import { showToast } from '../components/block/toast'
 
 /**
  * 데이터베이스에서 메뉴를 불러온다.
@@ -36,11 +36,11 @@ async function saveMenu(newMenu) {
     await updateDoc(docRef, {
       menu: arrayUnion(newMenu),
     })
-    showPopover('메뉴를 추가하였습니다.', 'success')
+    showToast('메뉴를 추가하였습니다.', 'success')
     goto('/')
   } catch (error) {
     console.error(error)
-    showPopover('메뉴를 추가하는 데 실패하였습니다.', 'fail')
+    showToast('메뉴를 추가하는 데 실패하였습니다.', 'fail')
   }
 }
 
