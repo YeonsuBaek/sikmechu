@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    padding-bottom: 20px;
+  }
+
   h1 {
     @apply text-lg font-bold;
   }
