@@ -40,6 +40,19 @@
   .red-button {
     @apply text-white bg-red-primary hover:bg-red-secondary active:bg-red-tertiary;
   }
+
+  .dark-text-button {
+    @apply text-dark-primary hover:text-dark-secondary active:text-dark-tertiary;
+  }
+
+  .popover {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+
+  .popover-removing {
+    opacity: 0;
+  }
 }
 
 @layer utilities {
