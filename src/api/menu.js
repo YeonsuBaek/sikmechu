@@ -1,7 +1,13 @@
-import { collection, doc, getDoc } from 'firebase/firestore'
+import { arrayUnion, collection, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 import { hideLoading, showLoading } from '../components/modal/loading'
+import { goto } from '../lib/router'
 
+/**
+ * 데이터베이스에서 메뉴를 불러온다.
+ *
+ * @returns {Object.<string, (string | string[])>[]?} newMenu
+ */
 async function getMenu() {
   try {
     showLoading()
@@ -17,4 +23,23 @@ async function getMenu() {
   }
 }
 
-export { getMenu }
+/**
+ * 새로운 메뉴를 데이터베이스에 저장한다.
+ *
+ * @param {Object.<string, (string | string[])>} newMenu
+ */
+async function saveMenu(newMenu) {
+  try {
+    const collectionRef = collection(db, 'sikmechu')
+    const docRef = doc(collectionRef, 'menu')
+    await updateDoc(docRef, {
+      menu: arrayUnion(newMenu),
+    })
+    goto('/')
+  } catch (error) {
+    console.error(error)
+    alert('메뉴를 추가하는 데 실패하였습니다.')
+  }
+}
+
+export { getMenu, saveMenu }

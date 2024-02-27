@@ -1,3 +1,6 @@
+/**
+ * 로딩 모달을 보여준다.
+ */
 function showLoading() {
   document
   document.querySelector('#modal').innerHTML = `
@@ -14,6 +17,9 @@ function showLoading() {
     `
 }
 
+/**
+ * 로딩 모달을 숨긴다.
+ */
 function hideLoading() {
   const loadingElement = document.querySelector('#loading-container')
   const backdropElement = document.querySelector('#loading-backdrop')
