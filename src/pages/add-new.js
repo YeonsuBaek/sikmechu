@@ -1,9 +1,7 @@
-import { goto } from '../lib/router'
 import { renderOptions, toggleOptionButton } from '../components/elements/option'
 import { getOptions } from '../api/options'
-import { arrayUnion, collection, doc, updateDoc } from 'firebase/firestore'
-import { db } from '../../firebase.config'
 import { saveMenu } from '../api/menu'
+import { showOut } from '../components/modal/out'
 
 /**
  * 새로운 메뉴 추가 페이지를 렌더링한다.
@@ -36,7 +34,7 @@ async function renderAddMenu() {
   toggleOptionButton(selectionButtons, selectedOptions)
 
   homeButton.addEventListener('click', () => {
-    goto('/')
+    showOut()
   })
 
   saveButton.addEventListener('click', () => {
