@@ -49,7 +49,12 @@ async function renderAddMenu() {
     const menuName = document.querySelector('#menu-name').value
 
     if (menuName.trim() === '') {
-      alert('메뉴 이름을 입력해주세요!')
+      showModal({
+        message: '메뉴 이름을 입력해주세요!',
+        buttonLabel: {
+          cancel: '닫기',
+        },
+      })
     } else {
       const newMenu = {
         id: Math.round(Math.random() * 1000000),
