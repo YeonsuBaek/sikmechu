@@ -7,7 +7,6 @@
  * @param {() => void} options.onSave 저장할 때 호출할 함수
  */
 function showModal({ message, buttonLabel, onSave }) {
-  document
   document.querySelector('#modal').innerHTML = `
         <aside id="modal-container" class="fixed z-50 flex-col w-[90%] max-w-[572px] bg-white rounded pos-center">
           <main class="p-6">${message}</main>
@@ -57,4 +56,4 @@ function hideModal() {
   }
 }
 
-export { showModal }
+export { showModal, hideModal }

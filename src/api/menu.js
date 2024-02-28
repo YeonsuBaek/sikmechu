@@ -1,8 +1,9 @@
 import { arrayUnion, collection, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
-import { hideLoading, showLoading } from '../components/modal/loading'
+import { showLoadingModal } from '../components/feature/loadingModal'
 import { goto } from '../lib/router'
 import { showToast } from '../components/block/toast'
+import { hideModal } from '../components/block/modal'
 
 /**
  * 데이터베이스에서 메뉴를 불러온다.
@@ -11,7 +12,7 @@ import { showToast } from '../components/block/toast'
  */
 async function getMenu() {
   try {
-    showLoading()
+    showLoadingModal()
     const collectionRef = collection(db, 'sikmechu')
     const docRef = doc(collectionRef, 'menu')
     const response = await getDoc(docRef)
@@ -20,7 +21,7 @@ async function getMenu() {
   } catch (error) {
     return null
   } finally {
-    hideLoading()
+    hideModal()
   }
 }
 
