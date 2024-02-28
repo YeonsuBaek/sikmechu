@@ -7,11 +7,11 @@
 
 function createMenuElement(result) {
   const element = document.createElement('ul')
-  element.classList.add(['grid', 'grid-flow-row', 'grid-cols-4', 'gap-2', 'max-sm:grid-cols-1', 'max-md:grid-cols-3'])
+  element.classList.add('grid', 'grid-flow-row', 'grid-cols-4', 'gap-2', 'max-sm:grid-cols-1', 'max-md:grid-cols-3')
   result.forEach((item) => {
     element.innerHTML += `
-          <li>
-            <button class="w-full px-2 py-1 secondary-button" type="button">${item.name}</button>
+          <li class="items-center w-half w-full">
+            <button class="w-full p-2 gray-button" type="button">${item.name}</button>
           </li>
         `
   })

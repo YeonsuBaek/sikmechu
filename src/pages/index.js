@@ -9,7 +9,7 @@ async function renderIndex() {
   document.querySelector('#app').innerHTML = `
       <main id="main-container" class="mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
         <section id="options"></section>
-        <button id="submit-button" class="mt-7 primary-button" type="button">밥 먹을 준비 완료!</button>
+        <button id="submit-button" class="mt-7 primary-button blue-button" type="button">밥 먹을 준비 완료!</button>
       </main>
     `
 

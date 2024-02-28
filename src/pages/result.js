@@ -11,8 +11,8 @@ import { goto } from '../lib/router'
 async function renderResult({ searchParams }) {
   document.querySelector('#app').innerHTML = `
     <main id="result-container" class="mx-4 mb-8 md:max-w-2xl md:mx-auto md:my-0">
-      <button id="reset-button" class="mt-7 mb-2 primary-button" type="button">다시 찾아보기</button>
-      <button id="add-button" class="w-full py-3 red-button" type="button">새로운 메뉴 추가하기</button>
+      <button id="reset-button" class="mt-7 mb-2 primary-button blue-button" type="button">다시 찾아보기</button>
+      <button id="add-button" class="primary-button red-button" type="button">새로운 메뉴 추가하기</button>
     </main>
   `
 
@@ -34,7 +34,7 @@ async function renderResult({ searchParams }) {
     const selectionButton = document.querySelectorAll('.selection-button')
     Array.from(selectionButton).forEach((button) => {
       button.classList.remove('blue-button')
-      button.classList.add('secondary-button')
+      button.classList.add('gray-button')
     })
   })
 

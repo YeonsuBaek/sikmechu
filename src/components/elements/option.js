@@ -10,7 +10,7 @@ function createSelectionElement(id, selections) {
   selections.forEach((selection) => {
     element.innerHTML += `
               <li class="inline-flex mb-4 mr-2">
-                <button data-option-id="${id}" data-selection-id="${selection.id}" class="selection-button px-3 py-1 secondary-button" type="button">
+                <button data-option-id="${id}" data-selection-id="${selection.id}" class="selection-button px-3 py-1 gray-button" type="button">
                   <span>${selection.name}</span>
                 </button>
               </li>
@@ -66,10 +66,10 @@ function renderOptions(element, options) {
 function toggleButtonStyle(button, isSelected) {
   if (isSelected) {
     button.classList.remove('blue-button')
-    button.classList.add('secondary-button')
+    button.classList.add('gray-button')
   } else {
     button.classList.add('blue-button')
-    button.classList.remove('secondary-button')
+    button.classList.remove('gray-button')
   }
 }
 
