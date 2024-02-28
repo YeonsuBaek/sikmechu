@@ -57,10 +57,6 @@
 
 @layer utilities {
   .primary-button {
-    @apply w-full py-3 flex-center;
-  }
-
-  .secondary-button {
-    @apply gray-button flex-center;
+    @apply w-full py-3;
   }
 }

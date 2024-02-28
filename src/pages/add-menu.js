@@ -15,7 +15,7 @@ async function renderAddMenu() {
       <h1 class="mt-4 mb-2">옵션 설정하기</h1>
       <section id="add-options"></section>
       <button id="save-button" class="mt-7 mb-2 primary-button blue-button" type="button">메뉴 추가하기</button>
-      <button id="home-button" class="w-full py-3 secondary-button" type="button">홈으로 돌아가기</button>
+      <button id="home-button" class="gray-button primary-button" type="button">홈으로 돌아가기</button>
     </main>
     `
 

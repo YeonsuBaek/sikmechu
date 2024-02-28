@@ -34,7 +34,7 @@ async function renderResult({ searchParams }) {
     const selectionButton = document.querySelectorAll('.selection-button')
     Array.from(selectionButton).forEach((button) => {
       button.classList.remove('blue-button')
-      button.classList.add('secondary-button')
+      button.classList.add('gray-button')
     })
   })
 

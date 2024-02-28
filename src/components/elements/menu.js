@@ -11,7 +11,7 @@ function createMenuElement(result) {
   result.forEach((item) => {
     element.innerHTML += `
           <li class="items-center w-half w-full">
-            <button class="w-full p-2 gray-button secondary-button" type="button">${item.name}</button>
+            <button class="w-full p-2 gray-button" type="button">${item.name}</button>
           </li>
         `
   })
