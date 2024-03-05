@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "제육복음",
+    "how_to_eat": ["0", "1"],
+    "what_to_eat": ["0"],
+    "when_to_eat": ["1", "2"],
+    "ingredients": ["0"],
+    "carbs_type": ["0"],
+    "spiciness_level": ["1", "2"],
+    "portion_size": ["0", "1", "2"]
+  },
+  {
+    "id": 2,
+    "name": "파스타",
+    "how_to_eat": ["0", "1"],
+    "what_to_eat": ["4"],
+    "when_to_eat": ["1", "2"],
+    "ingredients": ["0", "1", "2"],
+    "carbs_type": ["2"],
+    "spiciness_level": ["0", "1"],
+    "portion_size": ["0", "1", "2"]
+  }
+]
