@@ -1,4 +1,5 @@
 # 식사 메뉴를 추천합니다. (식.메.추.)
+![](https://velog.velcdn.com/images/yeonsubaek/post/c47db8b1-2e7a-41df-a87d-96808fb4ef69/image.png)
 
 ## 시작하기
 
