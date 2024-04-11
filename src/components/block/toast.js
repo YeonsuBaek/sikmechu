@@ -6,10 +6,9 @@
  */
 function showToast(text, state) {
   const color = getColor(state)
-  document
   document.querySelector('#toast').innerHTML = `
           <aside
-            id="success-container"
+            id="toast-container"
             class="popover popover-removing fixed top-6 right-6 z-50 flex items-center justify-between w-[312px] min-h-[64px] bg-white border rounded shadow-lg"
             style="border-color:${color};"
           >
@@ -20,9 +19,9 @@ function showToast(text, state) {
           </aside>
         `
 
-  const successElement = document.querySelector('#success-container')
+  const toastElement = document.querySelector('#toast-container')
   setTimeout(() => {
-    successElement.classList.remove('popover-removing')
+    toastElement.classList.remove('popover-removing')
   })
   setTimeout(() => {
     hideToast()
@@ -38,12 +37,13 @@ function showToast(text, state) {
  * Toast를 닫는다.
  */
 function hideToast() {
-  const successElement = document.querySelector('#success-container')
-  successElement.classList.add('popover-removing')
+  const toastElement = document.querySelector('#toast-container')
+  toastElement.classList.add('popover-removing')
   setTimeout(() => {
-    successElement.remove()
+    toastElement.remove()
   }, 300)
 }
+
 /**
  * 상태에 맞는 Popover 색상을 반환한다.
  *
