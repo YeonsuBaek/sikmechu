@@ -17,18 +17,18 @@ async function renderIndex() {
   const options = await getOptions()
   renderOptions(optionsElement, options)
 
-  const submitButton = document.querySelector('#submit-button')
-  submitButton.addEventListener('click', () => {
-    const query = JSON.stringify(selectedOptions)
-    goto(`/result?query=${query}`)
-  })
-
   const selectionButtons = document.querySelectorAll('.selection-button')
   const selectedOptions = options.reduce((acc, option) => {
     acc[option.id] = []
     return acc
   }, {})
   toggleOptionButton(selectionButtons, selectedOptions)
+
+  const submitButton = document.querySelector('#submit-button')
+  submitButton.addEventListener('click', () => {
+    const query = JSON.stringify(selectedOptions)
+    goto(`/result?query=${query}`)
+  })
 }
 
 export { renderIndex }
