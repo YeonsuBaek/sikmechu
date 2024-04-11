@@ -36,7 +36,7 @@ async function renderAddMenu() {
 
   homeButton.addEventListener('click', () => {
     showModal({
-      message: '지금 나가면 작성한 내용이 모두 사라져요! 그만 작성하고 나갈까요????',
+      message: '지금 나가면 작성한 내용이 모두 사라져요! 그만 작성하고 나갈까요?',
       buttonLabel: {
         cancel: '이어서 할래요.',
         save: '네, 그만 할래요.',
